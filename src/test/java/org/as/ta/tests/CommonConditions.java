@@ -10,7 +10,6 @@ public class CommonConditions {
     WebDriver driver;
 
     @BeforeMethod
-
     public void setUp() {
         driver = DriverSingleton.getDriver();
     }
