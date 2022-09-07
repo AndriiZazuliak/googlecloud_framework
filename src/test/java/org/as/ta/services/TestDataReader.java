@@ -3,7 +3,7 @@ package org.as.ta.services;
 import java.util.ResourceBundle;
 
 public class TestDataReader {
-    private static final ResourceBundle resourceBundle = ResourceBundle.getBundle("environment");
+    private static final ResourceBundle resourceBundle = ResourceBundle.getBundle("src/test/resources/environment");
 
     public static String getTestData(String key){
         return resourceBundle.getString(key);
