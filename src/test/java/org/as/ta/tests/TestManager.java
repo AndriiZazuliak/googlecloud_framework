@@ -1,5 +1,7 @@
 package org.as.ta.tests;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.as.ta.model.Estimation;
 import org.as.ta.services.EstimationCreator;
 import org.testng.annotations.Test;
@@ -12,6 +14,7 @@ import static org.as.ta.util.YopEmailGenerator.*;
 import static org.testng.Assert.assertTrue;
 
 public class TestManager extends CommonConditions{
+    private static final Logger logger = LogManager.getRootLogger();
     private static final long WAIT_TIME = 10;
 
     @Test
@@ -30,7 +33,8 @@ public class TestManager extends CommonConditions{
         // переключаємося на сторінку електронної пошти
         getEmailPage().switchToPreviousTab(yopTab);
         String mailEstimation = showEstimatedAmount(WAIT_TIME); // записуємо текст отриманих поштою розрахунків
-
+        logger.info("Estimated amount is " + getYopMailPage().getMonthCost());
+        logger.info("Estimation text: " + getEmailPage().getEstimation());
         Pattern pattern = Pattern.compile(".*" + mailEstimation + ".*");
         Matcher matcher = pattern.matcher(calcEstimation);
         assertTrue(matcher.matches());

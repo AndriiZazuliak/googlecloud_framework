@@ -1,5 +1,7 @@
 package org.as.ta.util;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.as.ta.model.Estimation;
 import org.as.ta.pages.EmailPage;
 import org.as.ta.pages.GCPCPage;
@@ -9,6 +11,7 @@ import org.as.ta.pages.SearchResultPage;
 import static org.as.ta.driver.DriverSingleton.getDriver;
 
 public class GoogleCloudEstimator {
+    private static final Logger logger = LogManager.getRootLogger();
     private static final String SEARCH_WORD = "Google Cloud Platform Pricing Calculator";
     private static final String HOME_URL = "https://cloud.google.com/";
 
@@ -60,6 +63,7 @@ public class GoogleCloudEstimator {
         getGCPCPage().clickEmailEstimate();
         getEmailPage().inputEmail(email);
         getEmailPage().clickSendEmail();
+        logger.info("Estimation text: " + getEmailPage().getEstimation());
         return getEmailPage().getEstimation();
     }
 }
