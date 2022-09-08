@@ -26,6 +26,7 @@ public class BasePage {
     public void switchToPreviousTab(String windowId){
         driver.switchTo().window(windowId);
     }
+
     public void waitForPageLoadComplete(long timeWait){  // завантаження сторінки
         new WebDriverWait(driver, Duration.ofSeconds(timeWait))
                 .until(webDriver ->((JavascriptExecutor) webDriver)
@@ -34,6 +35,10 @@ public class BasePage {
     public void waitForVisibility(long timeWait, WebElement element){
         new WebDriverWait(driver, Duration.ofSeconds(timeWait))
                 .until(ExpectedConditions.visibilityOf(element));
+    }
+    public void waitForClickable(long timeWait, WebElement element){
+        new WebDriverWait(driver, Duration.ofSeconds(timeWait))
+                .until(ExpectedConditions.elementToBeClickable(element));
     }
     public void waiter(long timeWait){
         new WebDriverWait(driver, Duration.ofSeconds(timeWait));

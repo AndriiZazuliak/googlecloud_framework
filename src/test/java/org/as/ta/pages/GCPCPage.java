@@ -14,27 +14,32 @@ public class GCPCPage extends BasePage{
     WebElement secondFrame;
     @FindBy(xpath = "//input[@ng-model='listingCtrl.computeServer.quantity']")
     WebElement instances;
-    @FindBy(xpath = "//md-select[@id='select_102']//div[@class='md-text']")
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.class']//div[@class='md-text']")
+//    @FindBy(xpath = "//md-select[@id='select_102']//div[@class='md-text']")
     WebElement operatingSystemSoftwareMenu;
-    @FindBy(xpath = "//md-select[@id='select_106']//div[@class='md-text']")
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.os']//div[@class='md-text']")
+//    @FindBy(xpath = "//md-select[@id='select_106']//div[@class='md-text']")
     WebElement provisioningModelMenu;
-    @FindBy(xpath = "//md-select[@id='select_112']//div[@class='md-text']")
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.family']//div[@class='md-text']")
+//    @FindBy(xpath = "//md-select[@id='select_112']//div[@class='md-text']")
     WebElement machineFamilyMenu;
-    @FindBy(xpath = "//md-select[@id='select_114']//div[@class='md-text ng-binding']")
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.series']//div[@class='md-text ng-binding']")
+//    @FindBy(xpath = "//md-select[@id='select_114']//div[@class='md-text ng-binding']")
     WebElement seriesNameMenu;
-    @FindBy(xpath = "//md-select[@id='select_116']//div[@class='md-text ng-binding']")
+//    @FindBy(xpath = "//md-select[@id='select_116']//div[@class='md-text ng-binding']")
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.instance']//div[@class='md-text ng-binding']")
     WebElement machineTypeMenu;
     @FindBy(xpath = "//md-checkbox[@aria-label='Add GPUs' and contains(@ng-model, 'computeServer')]")
     WebElement checkAddGPU;
-    @FindBy(xpath = "//md-select[@id='select_461']")
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.gpuType']")
     WebElement gpuTypeMenu;
-    @FindBy(xpath = "//md-select[@id='select_463']")
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.gpuCount']")
     WebElement amountOfGPUs;
-    @FindBy(xpath = "//md-select[@id='select_418']")
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.ssd']")
     WebElement localSSDMenu;
-    @FindBy(xpath = "//md-select[@id='select_122']")
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.location']")
     WebElement datacenterLocationMenu;
-    @FindBy(xpath = "//md-select[@id='select_129']")
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.cud']")
     WebElement committedUsageMenu;
     @FindBy(xpath = "//button[contains(text(),'Add to Estimate') and contains(@ng-disabled,'ComputeEngine')]")
     WebElement estimateButton;
@@ -53,7 +58,6 @@ public class GCPCPage extends BasePage{
     }
     public void insertOperatingSystemSoftware(Estimation estimation){
         operatingSystemSoftwareMenu.click();
-        System.out.println(estimation.getOperatingSystemSoftware());
         driver.findElement(By.xpath("//md-option/div[@class='md-text' and contains(text(),'" + estimation.getOperatingSystemSoftware() + "')]")).click();
     }
     public void insertProvisioningModel(Estimation estimation){

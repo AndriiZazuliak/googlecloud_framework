@@ -1,0 +1,12 @@
+package org.as.ta.services;
+
+import java.util.ResourceBundle;
+
+public class TestDataReader {
+
+    private static final ResourceBundle resourceBundle = ResourceBundle.getBundle("qa");
+//    private static final ResourceBundle resourceBundle = ResourceBundle.getBundle("src/test/resources/" + System.getProperty("environment"));
+    public static String getTestData(String key){
+        return resourceBundle.getString(key);
+    }
+}
