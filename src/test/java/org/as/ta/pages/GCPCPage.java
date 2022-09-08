@@ -14,19 +14,14 @@ public class GCPCPage extends BasePage{
     WebElement secondFrame;
     @FindBy(xpath = "//input[@ng-model='listingCtrl.computeServer.quantity']")
     WebElement instances;
-    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.class']//div[@class='md-text']")
-//    @FindBy(xpath = "//md-select[@id='select_102']//div[@class='md-text']")
-    WebElement operatingSystemSoftwareMenu;
     @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.os']//div[@class='md-text']")
-//    @FindBy(xpath = "//md-select[@id='select_106']//div[@class='md-text']")
+    WebElement operatingSystemSoftwareMenu;
+    @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.class']//div[@class='md-text']")
     WebElement provisioningModelMenu;
     @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.family']//div[@class='md-text']")
-//    @FindBy(xpath = "//md-select[@id='select_112']//div[@class='md-text']")
     WebElement machineFamilyMenu;
     @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.series']//div[@class='md-text ng-binding']")
-//    @FindBy(xpath = "//md-select[@id='select_114']//div[@class='md-text ng-binding']")
     WebElement seriesNameMenu;
-//    @FindBy(xpath = "//md-select[@id='select_116']//div[@class='md-text ng-binding']")
     @FindBy(xpath = "//md-select[@ng-model='listingCtrl.computeServer.instance']//div[@class='md-text ng-binding']")
     WebElement machineTypeMenu;
     @FindBy(xpath = "//md-checkbox[@aria-label='Add GPUs' and contains(@ng-model, 'computeServer')]")
@@ -58,7 +53,8 @@ public class GCPCPage extends BasePage{
     }
     public void insertOperatingSystemSoftware(Estimation estimation){
         operatingSystemSoftwareMenu.click();
-        driver.findElement(By.xpath("//md-option/div[@class='md-text' and contains(text(),'" + estimation.getOperatingSystemSoftware() + "')]")).click();
+        driver.findElement(By.xpath("//md-option/div[contains(text(),'" + estimation.getOperatingSystemSoftware() + "')]")).click();
+//        driver.findElement(By.xpath("//md-option/div[@class='md-text' and contains(text(),'" + estimation.getOperatingSystemSoftware() + "')]/parent::md-option")).click();
     }
     public void insertProvisioningModel(Estimation estimation){
         provisioningModelMenu.click();

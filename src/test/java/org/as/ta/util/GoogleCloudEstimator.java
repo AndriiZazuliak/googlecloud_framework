@@ -33,6 +33,7 @@ public class GoogleCloudEstimator {
         getHomePage().waitForPageLoadComplete(waitTime);
         getHomePage().isVisibleSearchSign();
         getHomePage().searchByKeyword(SEARCH_WORD);
+        getHomePage().waitForPageLoadComplete(waitTime);
         getSearchResultPage().waitForVisibility(waitTime, getSearchResultPage().getCalculator());
         getSearchResultPage().chooseCalculator();
         getGCPCPage().waitForPageLoadComplete(waitTime);
@@ -40,8 +41,11 @@ public class GoogleCloudEstimator {
     public static String insertDataInTheCalculatorAndEstimate(long waitTime, String email, Estimation estimation){
         getGCPCPage().comeInFrame();
         getGCPCPage().insertAmountOfInstances(estimation);
+        getGCPCPage().waitForPageLoadComplete(waitTime);
         getGCPCPage().insertOperatingSystemSoftware(estimation);
+        getGCPCPage().waitForPageLoadComplete(waitTime);
         getGCPCPage().insertProvisioningModel(estimation);
+        getGCPCPage().waitForPageLoadComplete(waitTime);
         getGCPCPage().insertMachineFamily(estimation);
         getGCPCPage().insertSeries(estimation);
         getGCPCPage().insertMachineType(estimation);
