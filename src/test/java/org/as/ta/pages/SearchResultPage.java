@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class SearchResultPage extends BasePage{
 
-    @FindBy(xpath = "(//a/b[text()='Google Cloud Platform Pricing Calculator'])[1]")
+    @FindBy(xpath = "//div[@class='gs-title']/a/b[text()='Google Cloud Platform Pricing Calculator']")
     WebElement calculator;
 
     public void chooseCalculator(){
