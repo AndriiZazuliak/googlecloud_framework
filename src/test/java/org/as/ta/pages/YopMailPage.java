@@ -16,7 +16,7 @@ public class YopMailPage extends BasePage{
     @FindBy(xpath = "//iframe[@name='ifmail']")
     WebElement frame;
 
-    
+
 
     public YopMailPage(WebDriver driver){
         super(driver);
