@@ -15,7 +15,7 @@ import static org.testng.Assert.assertTrue;
 
 public class TestManager extends CommonConditions{
     private static final Logger logger = LogManager.getRootLogger();
-    private static final long WAIT_TIME = 10;
+    private static final long WAIT_TIME = 15;
 
     @Test
     public void theFirstEstimationTest() {
@@ -28,13 +28,12 @@ public class TestManager extends CommonConditions{
         openGCPCalculator(WAIT_TIME);
         // працюємо з калькулятором
         String calcEstimation = insertDataInTheCalculatorAndEstimate(WAIT_TIME, email, estimation);
-
+        logger.info("Estimated amount is " + calcEstimation);
         getYopMailPage().switchToPreviousTab(calkTab);  //переключаємося на попередню вкладку
         // переключаємося на сторінку електронної пошти
         getEmailPage().switchToPreviousTab(yopTab);
         String mailEstimation = showEstimatedAmount(WAIT_TIME); // записуємо текст отриманих поштою розрахунків
-        logger.info("Estimated amount is " + getYopMailPage().getMonthCost());
-        logger.info("Estimation text: " + getEmailPage().getEstimation());
+        logger.info("Estimation text: " + mailEstimation);
         Pattern pattern = Pattern.compile(".*" + mailEstimation + ".*");
         Matcher matcher = pattern.matcher(calcEstimation);
         assertTrue(matcher.matches());
