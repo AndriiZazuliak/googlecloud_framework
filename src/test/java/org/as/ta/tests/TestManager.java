@@ -32,6 +32,7 @@ public class TestManager extends CommonConditions{
         getYopMailPage().switchToPreviousTab(calkTab);  //переключаємося на попередню вкладку
         // переключаємося на сторінку електронної пошти
         getEmailPage().switchToPreviousTab(yopTab);
+
         String mailEstimation = showEstimatedAmount(WAIT_TIME); // записуємо текст отриманих поштою розрахунків
         logger.info("Estimation text: " + mailEstimation);
         Pattern pattern = Pattern.compile(".*" + mailEstimation + ".*");

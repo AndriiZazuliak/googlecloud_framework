@@ -15,9 +15,17 @@ public class YopMailPage extends BasePage{
     WebElement monthCost;
     @FindBy(xpath = "//iframe[@name='ifmail']")
     WebElement frame;
+    @FindBy(xpath = "//button[@id='refresh']")
+    WebElement buttonRefresh;
+    @FindBy(xpath = "//div[@id='nbmail']")
+    WebElement countOfMails;
 
-
-
+    public String arriveEmail(){
+        return countOfMails.getText();
+    }
+    public void clickButtonRefresh(){
+        buttonRefresh.click();
+    }
     public YopMailPage(WebDriver driver){
         super(driver);
     }
@@ -27,12 +35,9 @@ public class YopMailPage extends BasePage{
     public String copyMail(){
         return copyMail.getAttribute("innerText");
     }
-
     public void clickAndCheckEmail(){
         checkEmail.click();
     }
-
-
     public void comeInYopFrame(){
         driver.switchTo().frame(frame);
     }

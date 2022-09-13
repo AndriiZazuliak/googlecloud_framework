@@ -32,17 +32,18 @@ public class YopEmailGenerator extends BasePage {
     }
 
     public static String showEstimatedAmount(long waitTime){
-        try {
-            Thread.sleep(30000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            logger.warn("The letter has not arrived yet. " + waitTime + " seconds have passed");
-        }
-//        getYopMailPage().waitForPageLoadComplete(waitTime);
+        // треба чекати поки прийде лист
         getYopMailPage().clickAndCheckEmail();
         getYopMailPage().waitForPageLoadComplete(waitTime * 2);
+        // випадок, коли у поштовій скриньці вже є листи
+        String previousText = getYopMailPage().arriveEmail();
+
+        do {
+            getYopMailPage().waiter(waitTime);
+            getYopMailPage().clickButtonRefresh();
+        }while (getYopMailPage().arriveEmail().equals(previousText));
+
         getYopMailPage().comeInYopFrame();
-        logger.info("Estimated amount is " + getYopMailPage().getMonthCost());
         return getYopMailPage().getMonthCost();
     }
 }

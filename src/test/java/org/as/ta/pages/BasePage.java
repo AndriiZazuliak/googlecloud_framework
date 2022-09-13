@@ -36,5 +36,7 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(timeWait))
                 .until(ExpectedConditions.visibilityOf(element));
     }
-
+    public void waiter(long timeWait){
+        new WebDriverWait(driver, Duration.ofSeconds(timeWait));
+    }
 }
